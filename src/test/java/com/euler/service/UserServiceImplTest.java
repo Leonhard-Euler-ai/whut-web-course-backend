@@ -1,6 +1,7 @@
 package com.euler.service;
 
 import com.euler.domain.ManageUserInfoResponseData;
+import com.euler.utils.RedisUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +19,12 @@ class UserServiceImplTest {
     @Autowired
     private UserServiceImpl userService;
 
+    @Autowired
+    private RegisterServiceImpl registerService;
+
+    @Autowired
+    private RedisUtil redisUtil;
+
     @Test
     void contextLoads() {
         // 测试删除用户
@@ -33,4 +40,14 @@ class UserServiceImplTest {
         System.out.println(userService.updateUserInfo(userInfo));
     }
 
+//    @Test
+//    void testRegister(){
+//        System.out.println(registerService.register());
+//    }
+
+    @Test
+    void redisTest(){
+        redisUtil.set("test","1");
+        System.out.println(redisUtil.get("test"));
+    }
 }
