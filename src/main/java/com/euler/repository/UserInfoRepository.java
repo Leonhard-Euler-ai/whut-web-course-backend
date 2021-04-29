@@ -19,4 +19,7 @@ public interface UserInfoRepository extends JpaRepository<UserInfo,Integer> {
      * @return
      */
     List<UserInfo> findUserByUserName(String username);
+
+    @Override
+    <S extends UserInfo> S save(S entity);
 }

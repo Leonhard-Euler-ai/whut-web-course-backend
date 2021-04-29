@@ -27,19 +27,32 @@ public class UserController {
     @GetMapping("/api/allUsers")
     @ResponseBody
     public BaseResponse getAllUserInfoExcludeSelf(HttpSession httpSession) {
-        return userService.getAllUserInfoExcludeSelf(
-                Integer.parseInt(httpSession.getAttribute(SESSION_KEY_USER).toString()));
+//        return userService.getAllUserInfoExcludeSelf(
+//                Integer.parseInt(httpSession.getAttribute(SESSION_KEY_USER).toString()));
+        return userService.getAllUserInfo();
     }
 
     @DeleteMapping("/api/deleteUser")
     @ResponseBody
-    public BaseResponse deleteUser(@RequestParam String username){
+    public BaseResponse deleteUser(@RequestParam String username) {
         return userService.deleteUserByUserName(username);
     }
 
     @PostMapping("/api/updateUserInfo")
     @ResponseBody
-    public BaseResponse updateUserInfo(@RequestBody ManageUserInfoResponseData manageUserInfoResponseData){
+    public BaseResponse updateUserInfo(@RequestBody ManageUserInfoResponseData manageUserInfoResponseData) {
         return userService.updateUserInfo(manageUserInfoResponseData);
+    }
+
+    @PostMapping("/api/updateBaseInfo")
+    @ResponseBody
+    public BaseResponse updateBaseInfo(HttpSession httpSession, @RequestParam String nickname, @RequestParam String mail, @RequestParam String birthday) {
+        return userService.updateBaseInfo(Integer.valueOf(httpSession.getAttribute(SESSION_KEY_USER).toString()), nickname, mail, birthday);
+    }
+
+    @PostMapping("/api/updatePassword")
+    @ResponseBody
+    public BaseResponse updatePassword(HttpSession httpSession, @RequestParam String oldPassword, @RequestParam String newPassword) {
+        return userService.updatePassword(Integer.valueOf(httpSession.getAttribute(SESSION_KEY_USER).toString()), oldPassword, newPassword);
     }
 }

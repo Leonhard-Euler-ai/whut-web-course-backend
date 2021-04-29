@@ -59,6 +59,7 @@ public class RegisterServiceImpl implements RegisterService {
             userInfo.setUserId(userId);
             userInfo.setUserName(userName);
             userInfo.setNickname("昵称");
+            userInfo.setBalance("0");
             System.out.println(userInfoRepository.saveAndFlush(userInfo));
 
             return new BaseResponse(HttpServletResponse.SC_OK, "注册成功");

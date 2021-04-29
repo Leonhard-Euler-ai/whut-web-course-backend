@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.sql.DataSource;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -41,7 +43,7 @@ class UserRepositoryTest {
 
        // System.out.println(userRepository.findUserByUsername("13720113769"));
 
-        System.out.println(userInfoRepository.findUserByUserName("测试"));
+//        System.out.println(userInfoRepository.findUserByUserName("测试"));
 
 //        //添加用户信息
 //        UserInfo userInfo = new UserInfo();
@@ -59,5 +61,17 @@ class UserRepositoryTest {
 //        user.setPassword("123456");
 //        System.out.println(userRepository.saveAndFlush(user));
 
+        //通过saveAndFlush更新
+//        UserInfo userInfo= userInfoRepository.findById(12).orElse(null);
+//       if(null==userInfo){
+//           System.out.println("userInfo为空");
+//           return;
+//       }
+//        userInfo.setNickname("验证");
+//        userInfo.setMail("mail");
+//        userInfo.setBirthday("2020-10-12");
+//        System.out.println(userInfoRepository.saveAndFlush(userInfo));
+
+        //
     }
 }
